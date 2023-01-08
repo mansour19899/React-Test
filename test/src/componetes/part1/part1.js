@@ -1,17 +1,13 @@
 import './part1.css';
 
-const part1=({title}) =>{
-
-const showName=()=>{
-  console.log(title);
-}
+const part1=({name,onDelete}) =>{
 
 
   return (
     <div className="card part-card">
       <div className="card-body">
-      <h3>{title}</h3>
-      <button type="button" className="btn btn-info" onClick={showName}>Info</button>
+      <h3>{name.name}</h3>
+      <button type="button" className="btn btn-info" onClick={()=>onDelete(name.id)}>Delete</button>
       </div>
     </div>
   );

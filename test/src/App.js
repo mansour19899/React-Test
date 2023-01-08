@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import PartList from './componetes/partList/partList';
+import AddName from './componetes/AddName/AddName'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,14 +11,22 @@ const App=()=> {
     {id:2,name:"Ali"},
     {id:3,name:"Mohammad"},
     {id:4,name:"Maryam"},
-    {id:5,name:"Javad"},
-    {id:6,name:"Jasem"},
   ])
 
+  const addName=(name)=>{
+    const id=Math.floor(Math.random()*10000);
+    const newNames={id,...name}
+    setNames([...names,newNames])
+  }
+
+  const deleteName=(id)=>{
+    setNames(names.filter((item)=>item.id!==id));
+  }
 
   return (
     <div className="container">
-      <PartList names={names} />
+      <AddName onAdd={addName} />
+      <PartList names={names} onDelete={deleteName} />
     </div>
   )
 }
